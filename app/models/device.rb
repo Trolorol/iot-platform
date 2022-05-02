@@ -15,5 +15,4 @@ class Device < ApplicationRecord
     def trigger
         Trigger.find_by(id: self.trigger_id)
     end
-
 end
