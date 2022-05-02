@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Triggers</h1>
+
+<div id="triggers">
+  <% @triggers.each do |trigger| %>
+    <%= render trigger %>
+    <p>
+      <%= link_to "Show this trigger", trigger %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New trigger", new_trigger_path %>

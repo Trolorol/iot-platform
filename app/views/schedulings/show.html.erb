@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @scheduling %>
+
+<div>
+  <%= link_to "Edit this scheduling", edit_scheduling_path(@scheduling) %> |
+  <%= link_to "Back to schedulings", schedulings_path %>
+
+  <%= button_to "Destroy this scheduling", @scheduling, method: :delete %>
+</div>

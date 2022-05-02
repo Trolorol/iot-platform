@@ -1,0 +1,3 @@
+class TriggerType < ApplicationRecord
+
+end

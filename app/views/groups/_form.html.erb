@@ -1,0 +1,38 @@
+
+<%= form_with(model: group) do |form| %>
+
+  <% if group.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+        <% group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label "Group Name", style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+
+  <ul class="groupFormCheck">
+    <% @devices.each do |device| %>
+      <li class="groupFormList">
+        <%= check_box_tag "devices_ids[]", device.id, :class=> "form-check-input", :id => "flexCheckDefault" %>
+        <%= label_tag(:device, device.name, :class => "form-check-label") %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
+

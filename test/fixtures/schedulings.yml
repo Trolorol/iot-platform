@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  device: one
+  group: one
+  schedule_time: 2022-04-30 21:24:25
+
+two:
+  account: two
+  device: two
+  group: two
+  schedule_time: 2022-04-30 21:24:25
