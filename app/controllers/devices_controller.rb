@@ -1,9 +1,32 @@
 class DevicesController < ApplicationController
-  before_action :set_device, only: %i[ show edit update destroy ]
+  before_action :set_device, only: %i[ show edit update destroy toggle_device ]
 
   # GET /devices or /devices.json
   def index
     @devices = Device.where(account_id: current_account.id)
+  end
+
+  def toggle_device
+    device_id =  params["id"]
+    puts "#####"
+    device_ar = current_account.devices.find(device_id)
+
+    if device_ar.present?
+      if device_ar.ligado?
+        device_ar.desligado!
+        DevicesHelper.publish("#{current_account.id}", "Desligado")
+      elsif device_ar.desligado?
+        device_ar.ligado!
+        DevicesHelper.publish("#{current_account.id}", "Ligado")
+      elsif device_ar.sensor?
+        #MODO SENSOR Não fazer nada
+      end
+      render :action => "index", :index => "cards", device: @devices = Device.where(account_id: current_account.id)
+    else
+      return render json: { error: "Device not found" }, status: :not_found
+    end
+    puts "#####"
+    puts "toggle_device"
   end
 
   # GET /devices/1 or /devices/1.json
@@ -73,5 +96,9 @@ class DevicesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def device_params
       params.require(:device).permit(:name, :ip)
+    end
+
+    def toggle_params
+      params.require(:device).permit(:id)
     end
 end

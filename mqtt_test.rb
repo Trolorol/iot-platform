@@ -1,19 +1,28 @@
 require 'rubygems'
 require 'mqtt'
-
+require 'dotenv'
+Dotenv.load('.env')
 #client = MQTT::Client.connect(:host => 'localhost', :port => 1883, :username => 'admin', :password => '123456')
 
 ### Publish###
-client = MQTT::Client.connect(
-    :host => 'localhost',
-    :username => 'admin',
-    :password => '123456',
-    :ssl => false,
-    :port => 1883
-  )
+puts "####{ENV["MQTTS_ENDPOINT"]}"
 
-  # client.publish('jcalapez/teste', 'Hello')
-  # client.disconnect
+client = MQTT::Client.connect(
+  :host => ENV["MQTTS_ENDPOINT"],
+  :username => ENV["MQTTS_USERNAME"],
+  :password => ENV["MQTTS_PASSWORD"],
+  :ssl => true,
+  :port => ENV["PORT"]
+)
+
+  # client = MQTT::Client.connect(
+  #   :host => 'mqtt.iade-iot.eu',
+  #   :port => 1883
+  # )
+
+
+  client.publish('jcalapez/hello', 'Hello')
+  client.disconnect
 #####
 
 
