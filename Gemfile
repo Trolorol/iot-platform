@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+gem 'dotenv-rails'
 
 ruby "3.0.0"
 
@@ -78,5 +79,5 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'dotenv-rails'
+
 gem "rodauth-rails", "~> 1.3"

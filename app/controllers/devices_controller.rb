@@ -14,10 +14,10 @@ class DevicesController < ApplicationController
     if device_ar.present?
       if device_ar.ligado?
         device_ar.desligado!
-        DevicesHelper.publish("jcalapez/teste", "Desligado")
+        DevicesHelper.publish("#{current_account.id}", "Desligado")
       elsif device_ar.desligado?
         device_ar.ligado!
-        DevicesHelper.publish("jcalapez/teste", "Ligado")
+        DevicesHelper.publish("#{current_account.id}", "Ligado")
       elsif device_ar.sensor?
         #MODO SENSOR Não fazer nada
       end
