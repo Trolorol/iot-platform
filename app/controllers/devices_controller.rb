@@ -14,10 +14,10 @@ class DevicesController < ApplicationController
     if device_ar.present?
       if device_ar.ligado?
         device_ar.desligado!
-        DevicesHelper.publish("#{current_account.id}", "Desligado")
+        DevicesHelper.publish("#{current_account.id}/#{device_id}", "Desligado")
       elsif device_ar.desligado?
         device_ar.ligado!
-        DevicesHelper.publish("#{current_account.id}", "Ligado")
+        DevicesHelper.publish("#{current_account.id}/#{device_id}", "Ligado")
       elsif device_ar.sensor?
         #MODO SENSOR Não fazer nada
       end
@@ -50,7 +50,6 @@ class DevicesController < ApplicationController
     @device.account_id = @user.id
     @device.trigger_id = Trigger.find(2).id
     @device.desligado!
-    
 
     #<Device id: nil, name: "Teste", ip: "", created_at: nil, updated_at: nil, messaging_addr: nil, account_id: nil, trigger_id: nil>
 
