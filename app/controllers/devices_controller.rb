@@ -49,6 +49,7 @@ class DevicesController < ApplicationController
 
     @device.account_id = @user.id
     @device.trigger_id = Trigger.find(2).id
+    @device.desligado!
     
 
     #<Device id: nil, name: "Teste", ip: "", created_at: nil, updated_at: nil, messaging_addr: nil, account_id: nil, trigger_id: nil>
