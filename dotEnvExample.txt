@@ -1,0 +1,8 @@
+PG_PORT=0000
+PG_PASSWORD=dbPassword
+PG_USER=dbUser
+PG_DB=databaseName
+MQTTS_ENDPOINT=endpointMqtt
+MQTTS_USERNAME=username
+MQTTS_PASSWORD=password
+MQTTS_PORT=0000
